@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"   
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 引入dbconfig.properties属性文件 -->
+	<!-- <context:property-placeholder location="classpath*:log4j.properties" /> -->
+	
+    <context:property-placeholder location="classpath*:jdbc.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">  
+        <property name="driverClassName" value="${jdbc.driver}" />  
+        <property name="url" value="${jdbc.url}" />  
+        <property name="username" value="${jdbc.username}" />  
+        <property name="password" value="${jdbc.password}" />  
+        <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="${jdbc.initialSize}"></property>  
+        <!-- 连接池最大数量 -->  
+        <property name="maxActive" value="${jdbc.maxActive}"></property>  
+        <!-- 连接池最大空闲 -->  
+        <property name="maxIdle" value="${jdbc.maxIdle}"></property>  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="${jdbc.minIdle}"></property>  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="${jdbc.maxWait}"></property>  
+        <!--removeAbandoned: 是否自动回收超时连接 -->
+		<property name="removeAbandoned" value="true" />
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位) -->
+		<property name="removeAbandonedTimeout" value="180" /> 
+		<property name="logAbandoned" value="true" />
+		<!-- 每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 -->
+		<!-- minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等) --> 
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> <!-- 1小时 -->
+		<property name="minEvictableIdleTimeMillis" value="18000000" /> <!-- 5小时 -->
+		<!-- 让空闲链接回收器(如果有)进行有效性检测 -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 从连接池之取出时进行有效性检测 -->
+		<property name="testOnBorrow" value="true" />
+		<!-- 归还连接池之前进行有效性检测 -->
+		<property name="testOnReturn" value="true" />
+    </bean>  
+    
+    <!-- 配置sqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:sql/*.xml" />
+    </bean>
+    <!-- 配置扫描器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描me.gacl.dao这个包以及它的子包下的所有映射接口类 -->
+        <property name="basePackage"  value="com.org.cbs.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+    <!-- 配置Spring的事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- 注解方式配置事物 -->
+    <tx:annotation-driven transaction-manager="transactionManager" /> 
+
+</beans>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.tms.HpzcMobileMapper">
+	<resultMap id="BaseResultMap" type="com.hpzc.model.tms.HpzcMobile">
+		<id column="phone_id" property="phoneId" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isdelete" jdbcType="VARCHAR" />
+		<result column="phone_code" property="phoneCode" jdbcType="VARCHAR" />
+		<result column="phone_name" property="phoneName" jdbcType="VARCHAR" />
+		<result column="phone_xhbm" property="phoneXhbm" jdbcType="VARCHAR" />
+		<result column="phone_xhmc" property="phoneXhmc" jdbcType="VARCHAR" />
+		<result column="phone_ysbh" property="phoneYsbh" jdbcType="VARCHAR" />
+		<result column="phone_ysmc" property="phoneYsmc" jdbcType="VARCHAR" />
+		<result column="phone_bbbm" property="phoneBbbm" jdbcType="VARCHAR" />
+		<result column="phone_bbmc" property="phoneBbmc" jdbcType="VARCHAR" />
+		<result column="phone_sjzj" property="phoneSjzj" jdbcType="VARCHAR" />
+		<result column="phone_sjdj" property="phoneSjdj" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="ramark1" property="ramark1" jdbcType="VARCHAR" />
+		<result column="ramark3" property="ramark3" jdbcType="VARCHAR" />
+		<result column="ramark4" property="ramark4" jdbcType="VARCHAR" />
+		<result column="ramark10" property="ramark10" jdbcType="VARCHAR" />
+		<result column="ramark6" property="ramark6" jdbcType="VARCHAR" />
+		<result column="ramark7" property="ramark7" jdbcType="VARCHAR" />
+		<result column="ramark2" property="ramark2" jdbcType="VARCHAR" />
+		<result column="ramark8" property="ramark8" jdbcType="VARCHAR" />
+		<result column="ramark9" property="ramark9" jdbcType="VARCHAR" />
+		<result column="ramark5" property="ramark5" jdbcType="VARCHAR" />
+		<result column="ramark13" property="ramark13" jdbcType="VARCHAR" />
+		<result column="ramark14" property="ramark14" jdbcType="VARCHAR" />
+		<result column="ramark12" property="ramark12" jdbcType="VARCHAR" />
+		<result column="ramark11" property="ramark11" jdbcType="VARCHAR" />
+		<result column="ramark15" property="ramark15" jdbcType="VARCHAR" />
+		<result column="ramark16" property="ramark16" jdbcType="VARCHAR" />
+		<result column="ramark17" property="ramark17" jdbcType="VARCHAR" />
+		<result column="ramark18" property="ramark18" jdbcType="VARCHAR" />
+		<result column="ramark19" property="ramark19" jdbcType="VARCHAR" />
+		<result column="ramark20" property="ramark20" jdbcType="VARCHAR" />
+		<result column="phone_xgrq" property="phoneXgrq" jdbcType="DATE" />
+		<result column="phone_cjrq" property="phoneCjrq" jdbcType="DATE" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		phone_id, phone_code, phone_name, phone_xhbm, phone_xhmc, phone_ysbh,
+		phone_ysmc,
+		phone_bbbm, phone_bbmc, phone_sjzj, phone_sjdj, memo, ramark1, ramark3, ramark4,
+		ramark10, ramark6, ramark7, ramark2, ramark8, ramark9, ramark5,
+		ramark13, ramark14,
+		ramark12, ramark11, ramark15, ramark16, ramark17, ramark18, ramark19, ramark20,
+		phone_xgrq,
+		phone_cjrq,is_delete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from hpzc_mobile
+		where phone_id = #{phoneId,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insert" parameterType="com.hpzc.model.tms.HpzcMobile">
+		insert into hpzc_mobile (phone_id, phone_code, phone_name,
+		phone_xhbm, phone_xhmc, phone_ysbh,
+		phone_ysmc, phone_bbbm, phone_bbmc,
+		phone_sjzj, phone_sjdj, memo,
+		ramark1, ramark3, ramark4,
+		ramark10, ramark6, ramark7,
+		ramark2, ramark8, ramark9,
+		ramark5, ramark13, ramark14,
+		ramark12, ramark11, ramark15,
+		ramark16, ramark17, ramark18,
+		ramark19, ramark20, phone_xgrq,
+		phone_cjrq)
+		values (#{phoneId,jdbcType=VARCHAR}, #{phoneCode,jdbcType=VARCHAR},
+		#{phoneName,jdbcType=VARCHAR},
+		#{phoneXhbm,jdbcType=VARCHAR}, #{phoneXhmc,jdbcType=VARCHAR}, #{phoneYsbh,jdbcType=VARCHAR},
+		#{phoneYsmc,jdbcType=VARCHAR}, #{phoneBbbm,jdbcType=VARCHAR},
+		#{phoneBbmc,jdbcType=VARCHAR},
+		#{phoneSjzj,jdbcType=VARCHAR}, #{phoneSjdj,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR},
+		#{ramark1,jdbcType=VARCHAR}, #{ramark3,jdbcType=VARCHAR},
+		#{ramark4,jdbcType=VARCHAR},
+		#{ramark10,jdbcType=VARCHAR}, #{ramark6,jdbcType=VARCHAR}, #{ramark7,jdbcType=VARCHAR},
+		#{ramark2,jdbcType=VARCHAR}, #{ramark8,jdbcType=VARCHAR},
+		#{ramark9,jdbcType=VARCHAR},
+		#{ramark5,jdbcType=VARCHAR}, #{ramark13,jdbcType=VARCHAR}, #{ramark14,jdbcType=VARCHAR},
+		#{ramark12,jdbcType=VARCHAR}, #{ramark11,jdbcType=VARCHAR},
+		#{ramark15,jdbcType=VARCHAR},
+		#{ramark16,jdbcType=VARCHAR}, #{ramark17,jdbcType=VARCHAR}, #{ramark18,jdbcType=VARCHAR},
+		#{ramark19,jdbcType=VARCHAR}, #{ramark20,jdbcType=VARCHAR},
+		#{phoneXgrq,jdbcType=DATE},
+		#{phoneCjrq,jdbcType=DATE})
+	</insert>
+
+	<update id="update" parameterType="com.hpzc.model.tms.HpzcMobile">
+		update hpzc_mobile
+		<set>
+			<if test="phoneCode != null">
+				phone_code = #{phoneCode,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneName != null">
+				phone_name = #{phoneName,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneXhbm != null">
+				phone_xhbm = #{phoneXhbm,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneXhmc != null">
+				phone_xhmc = #{phoneXhmc,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneYsbh != null">
+				phone_ysbh = #{phoneYsbh,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneYsmc != null">
+				phone_ysmc = #{phoneYsmc,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneBbbm != null">
+				phone_bbbm = #{phoneBbbm,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneBbmc != null">
+				phone_bbmc = #{phoneBbmc,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneSjzj != null">
+				phone_sjzj = #{phoneSjzj,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneSjdj != null">
+				phone_sjdj = #{phoneSjdj,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark1 != null">
+				ramark1 = #{ramark1,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark3 != null">
+				ramark3 = #{ramark3,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark4 != null">
+				ramark4 = #{ramark4,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark10 != null">
+				ramark10 = #{ramark10,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark6 != null">
+				ramark6 = #{ramark6,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark7 != null">
+				ramark7 = #{ramark7,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark2 != null">
+				ramark2 = #{ramark2,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark8 != null">
+				ramark8 = #{ramark8,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark9 != null">
+				ramark9 = #{ramark9,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark5 != null">
+				ramark5 = #{ramark5,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark13 != null">
+				ramark13 = #{ramark13,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark14 != null">
+				ramark14 = #{ramark14,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark12 != null">
+				ramark12 = #{ramark12,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark11 != null">
+				ramark11 = #{ramark11,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark15 != null">
+				ramark15 = #{ramark15,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark16 != null">
+				ramark16 = #{ramark16,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark17 != null">
+				ramark17 = #{ramark17,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark18 != null">
+				ramark18 = #{ramark18,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark19 != null">
+				ramark19 = #{ramark19,jdbcType=VARCHAR},
+			</if>
+			<if test="ramark20 != null">
+				ramark20 = #{ramark20,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneXgrq != null">
+				phone_xgrq = #{phoneXgrq,jdbcType=DATE},
+			</if>
+			<if test="phoneCjrq != null">
+				phone_cjrq = #{phoneCjrq,jdbcType=DATE},
+			</if>
+			<if test="isdelete != null">
+				is_delete = #{isdelete,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where phone_id = #{phoneId,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.tms.HpzcCGoodMapper" >
+  <resultMap id="BaseResultMap" type="com.hpzc.model.tms.HpzcCGood" >
+    <id column="g_id" property="gId" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="g_code" property="gCode" jdbcType="VARCHAR" />
+    <result column="g_name" property="gName" jdbcType="VARCHAR" />
+    <result column="g_memo" property="gMemo" jdbcType="VARCHAR" />
+    <result column="g_tm" property="gTm" jdbcType="VARCHAR" />
+    <result column="g_cs" property="gCs" jdbcType="VARCHAR" />
+    <result column="g_cgj" property="gCgj" jdbcType="DOUBLE" />
+    <result column="g_xsj" property="gXsj" jdbcType="DOUBLE" />
+    <result column="g_sjsj" property="gSjsj" jdbcType="DOUBLE" />
+    <result column="g_spsl" property="gSpsl" jdbcType="INTEGER" />
+    <result column="g_spjhzj" property="gSpjhzj" jdbcType="DOUBLE" />
+    <result column="g_spxszj" property="gSpxszj" jdbcType="DOUBLE" />
+    <result column="g_spsjzje" property="gSpsjzje" jdbcType="DOUBLE" />
+    <result column="g_splr" property="gSplr" jdbcType="DOUBLE" />
+    <result column="g_creator" property="gCreator" jdbcType="VARCHAR" />
+    <result column="g_creator_name" property="gCreatorName" jdbcType="DATE" />
+    <result column="g_modifier" property="gModifier" jdbcType="VARCHAR" />
+    <result column="g_modifier_name" property="gModifierName" jdbcType="DATE" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    g_id, g_code, g_name, g_memo, g_tm, g_cs, g_cgj, g_xsj, g_sjsj, g_spsl, g_spjhzj, 
+    g_spxszj, g_spsjzje, g_splr, g_creator, g_creator_name, g_modifier, g_modifier_name, 
+    memo, remark1, remark2, remark3, remark4, remark5,is_delete
+  </sql>
+  
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from hpzc_good
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </select>
+  
+  <insert id="insert" parameterType="com.hpzc.model.tms.HpzcCGood" >
+    insert into hpzc_good (g_id, g_code, g_name, 
+      g_memo, g_tm, g_cs, g_cgj, 
+      g_xsj, g_sjsj, g_spsl, g_spjhzj, 
+      g_spxszj, g_spsjzje, g_splr, 
+      g_creator, g_creator_name, g_modifier, 
+      g_modifier_name, memo, remark1, 
+      remark2, remark3, remark4, 
+      remark5)
+    values (#{gId,jdbcType=VARCHAR}, #{gCode,jdbcType=VARCHAR}, #{gName,jdbcType=VARCHAR}, 
+      #{gMemo,jdbcType=VARCHAR}, #{gTm,jdbcType=VARCHAR}, #{gCs,jdbcType=VARCHAR}, #{gCgj,jdbcType=DOUBLE}, 
+      #{gXsj,jdbcType=DOUBLE}, #{gSjsj,jdbcType=DOUBLE}, #{gSpsl,jdbcType=INTEGER}, #{gSpjhzj,jdbcType=DOUBLE}, 
+      #{gSpxszj,jdbcType=DOUBLE}, #{gSpsjzje,jdbcType=DOUBLE}, #{gSplr,jdbcType=DOUBLE}, 
+      #{gCreator,jdbcType=VARCHAR}, #{gCreatorName,jdbcType=DATE}, #{gModifier,jdbcType=VARCHAR}, 
+      #{gModifierName,jdbcType=DATE}, #{memo,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, 
+      #{remark5,jdbcType=VARCHAR})
+  </insert>
+ 
+  <update id="update" parameterType="com.hpzc.model.tms.HpzcCGood" >
+    update hpzc_good
+    <set >
+      <if test="gCode != null" >
+        g_code = #{gCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gName != null" >
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gMemo != null" >
+        g_memo = #{gMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="gTm != null" >
+        g_tm = #{gTm,jdbcType=VARCHAR},
+      </if>
+      <if test="gCs != null" >
+        g_cs = #{gCs,jdbcType=VARCHAR},
+      </if>
+      <if test="gCgj != null" >
+        g_cgj = #{gCgj,jdbcType=DOUBLE},
+      </if>
+      <if test="gXsj != null" >
+        g_xsj = #{gXsj,jdbcType=DOUBLE},
+      </if>
+      <if test="gSjsj != null" >
+        g_sjsj = #{gSjsj,jdbcType=DOUBLE},
+      </if>
+      <if test="gSpsl != null" >
+        g_spsl = #{gSpsl,jdbcType=INTEGER},
+      </if>
+      <if test="gSpjhzj != null" >
+        g_spjhzj = #{gSpjhzj,jdbcType=DOUBLE},
+      </if>
+      <if test="gSpxszj != null" >
+        g_spxszj = #{gSpxszj,jdbcType=DOUBLE},
+      </if>
+      <if test="gSpsjzje != null" >
+        g_spsjzje = #{gSpsjzje,jdbcType=DOUBLE},
+      </if>
+      <if test="gSplr != null" >
+        g_splr = #{gSplr,jdbcType=DOUBLE},
+      </if>
+      <if test="gCreator != null" >
+        g_creator = #{gCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="gCreatorName != null" >
+        g_creator_name = #{gCreatorName,jdbcType=DATE},
+      </if>
+      <if test="gModifier != null" >
+        g_modifier = #{gModifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gModifierName != null" >
+        g_modifier_name = #{gModifierName,jdbcType=DATE},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        is_delete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.tms.HpzcUserMapper">
+	<resultMap id="BaseResultMap" type="com.hpzc.model.tms.HpzcUser">
+		<id column="u_id" property="uId" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isdelete" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="u_no" property="uNo" jdbcType="VARCHAR" />
+		<result column="khh" property="khh" jdbcType="VARCHAR" />
+		<result column="yhzh" property="yhzh" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="weixin" property="weixin" jdbcType="VARCHAR" />
+		<result column="mail" property="mail" jdbcType="VARCHAR" />
+		<result column="jjlxr" property="jjlxr" jdbcType="VARCHAR" />
+		<result column="jjlxrtel" property="jjlxrtel" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="other" property="other" jdbcType="VARCHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
+		<result column="org_codesj" property="orgCodesj" jdbcType="VARCHAR" />
+		<result column="org_namesj" property="orgNamesj" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		u_id, username, password, name, tel, u_no, khh, yhzh, qq,
+		weixin, mail,
+		jjlxr, jjlxrtel,
+		address, other, org_code, org_name,
+		org_codesj, org_namesj, memo,is_delete
+	</sql>
+
+	<select id="selectByNum" resultType="INTEGER" parameterType="map">
+		select count(*) from
+		hpzc_user where 1=1
+		<if test="username !=null and username !=''">
+			and username = #{username}
+		</if>
+		<if test="password !=null and password !=''">
+			and password = #{password}
+		</if>
+	</select>
+
+
+	<select id="selectByMap" resultMap="BaseResultMap"
+		parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from hpzc_user
+		where is_delete='0'
+		<if test="username !=null and username !=''">
+			and username = #{username}
+		</if>
+		<if test="password !=null and password !=''">
+			and password = #{password}
+		</if>
+		<if test="zh !=null and zh !=''">
+			and username like CONCAT('%',#{zh},'%')
+		</if>
+		<if test="yhm !=null and yhm !=''">
+			and name like CONCAT('%',#{yhm},'%')
+		</if>
+		<if test="dh !=null and dh !=''">
+			and tel like CONCAT('%',#{dh},'%')
+		</if>
+		<if test="qq !=null and qq !=''">
+			and qq like CONCAT('%',#{qq},'%')
+		</if>
+	</select>
+
+	<select id="selectById" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from hpzc_user
+		where u_id = #{uId,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insert" parameterType="com.hpzc.model.tms.HpzcUser">
+		insert into hpzc_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="uId != null">
+				u_id,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="uNo != null">
+				u_no,
+			</if>
+			<if test="khh != null">
+				khh,
+			</if>
+			<if test="yhzh != null">
+				yhzh,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="weixin != null">
+				weixin,
+			</if>
+			<if test="mail != null">
+				mail,
+			</if>
+			<if test="jjlxr != null">
+				jjlxr,
+			</if>
+			<if test="jjlxrtel != null">
+				jjlxrtel,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="other != null">
+				other,
+			</if>
+			<if test="orgCode != null">
+				org_code,
+			</if>
+			<if test="orgName != null">
+				org_name,
+			</if>
+			<if test="orgCodesj != null">
+				org_codesj,
+			</if>
+			<if test="orgNamesj != null">
+				org_namesj,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="uId != null">
+				#{uId,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="uNo != null">
+				#{uNo,jdbcType=VARCHAR},
+			</if>
+			<if test="khh != null">
+				#{khh,jdbcType=VARCHAR},
+			</if>
+			<if test="yhzh != null">
+				#{yhzh,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				#{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="mail != null">
+				#{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="jjlxr != null">
+				#{jjlxr,jdbcType=VARCHAR},
+			</if>
+			<if test="jjlxrtel != null">
+				#{jjlxrtel,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="other != null">
+				#{other,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				#{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCodesj != null">
+				#{orgCodesj,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNamesj != null">
+				#{orgNamesj,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.hpzc.model.tms.HpzcUser">
+		update hpzc_user
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				tel = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="uNo != null">
+				u_no = #{uNo,jdbcType=VARCHAR},
+			</if>
+			<if test="khh != null">
+				khh = #{khh,jdbcType=VARCHAR},
+			</if>
+			<if test="yhzh != null">
+				yhzh = #{yhzh,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				weixin = #{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="mail != null">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="jjlxr != null">
+				jjlxr = #{jjlxr,jdbcType=VARCHAR},
+			</if>
+			<if test="jjlxrtel != null">
+				jjlxrtel = #{jjlxrtel,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="other != null">
+				other = #{other,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				org_code = #{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				org_name = #{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCodesj != null">
+				org_codesj = #{orgCodesj,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNamesj != null">
+				org_namesj = #{orgNamesj,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="isdelete != null">
+				is_delete = #{isdelete,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where u_id = #{uId,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

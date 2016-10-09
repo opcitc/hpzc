@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.tms.HpzcSupplierMapper">
+	<resultMap id="BaseResultMap" type="com.hpzc.model.tms.HpzcSupplier">
+		<id column="s_id" property="sId" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isdelete" jdbcType="VARCHAR" />
+		<result column="s_code" property="sCode" jdbcType="VARCHAR" />
+		<result column="s_name" property="sName" jdbcType="VARCHAR" />
+		<result column="s_address" property="sAddress" jdbcType="VARCHAR" />
+		<result column="s_tel_name" property="sTelName" jdbcType="VARCHAR" />
+		<result column="s_tel" property="sTel" jdbcType="VARCHAR" />
+		<result column="s_qq" property="sQq" jdbcType="VARCHAR" />
+		<result column="s_weixin" property="sWeixin" jdbcType="VARCHAR" />
+		<result column="s_mail" property="sMail" jdbcType="VARCHAR" />
+		<result column="s_post" property="sPost" jdbcType="VARCHAR" />
+		<result column="s_bank1" property="sBank1" jdbcType="VARCHAR" />
+		<result column="s_account1" property="sAccount1" jdbcType="VARCHAR" />
+		<result column="s_bank2" property="sBank2" jdbcType="VARCHAR" />
+		<result column="s_account2" property="sAccount2" jdbcType="VARCHAR" />
+		<result column="s_creator" property="sCreator" jdbcType="VARCHAR" />
+		<result column="s_creator_name" property="sCreatorName"
+			jdbcType="DATE" />
+		<result column="s_modifier" property="sModifier" jdbcType="VARCHAR" />
+		<result column="s_modifier_name" property="sModifierName"
+			jdbcType="DATE" />
+		<result column="s_memo" property="sMemo" jdbcType="VARCHAR" />
+		<result column="remark1" property="remark1" jdbcType="VARCHAR" />
+		<result column="remark2" property="remark2" jdbcType="VARCHAR" />
+		<result column="remark3" property="remark3" jdbcType="VARCHAR" />
+		<result column="remark4" property="remark4" jdbcType="VARCHAR" />
+		<result column="remark5" property="remark5" jdbcType="VARCHAR" />
+		<result column="remark6" property="remark6" jdbcType="VARCHAR" />
+		<result column="remark7" property="remark7" jdbcType="VARCHAR" />
+		<result column="remark8" property="remark8" jdbcType="VARCHAR" />
+		<result column="remark9" property="remark9" jdbcType="VARCHAR" />
+		<result column="remark10" property="remark10" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		s_id, s_code, s_name, s_address, s_tel_name, s_tel, s_qq, s_weixin, s_mail,
+		s_post,
+		s_bank1, s_account1, s_bank2, s_account2, s_creator, s_creator_name,
+		s_modifier,
+		s_modifier_name, s_memo, remark1, remark2, remark3, remark4, remark5, remark6,
+		remark7,
+		remark8, remark9, remark10,is_delete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from hpzc_supplier
+		where s_id = #{sId,jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="insert" parameterType="com.hpzc.model.tms.HpzcSupplier">
+		insert into hpzc_supplier (s_id, s_code, s_name,
+		s_address, s_tel_name, s_tel,
+		s_qq, s_weixin, s_mail,
+		s_post, s_bank1, s_account1,
+		s_bank2, s_account2, s_creator,
+		s_creator_name, s_modifier, s_modifier_name,
+		s_memo, remark1, remark2,
+		remark3, remark4, remark5,
+		remark6, remark7, remark8,
+		remark9, remark10)
+		values (#{sId,jdbcType=VARCHAR}, #{sCode,jdbcType=VARCHAR},
+		#{sName,jdbcType=VARCHAR},
+		#{sAddress,jdbcType=VARCHAR}, #{sTelName,jdbcType=VARCHAR}, #{sTel,jdbcType=VARCHAR},
+		#{sQq,jdbcType=VARCHAR}, #{sWeixin,jdbcType=VARCHAR},
+		#{sMail,jdbcType=VARCHAR},
+		#{sPost,jdbcType=VARCHAR}, #{sBank1,jdbcType=VARCHAR}, #{sAccount1,jdbcType=VARCHAR},
+		#{sBank2,jdbcType=VARCHAR}, #{sAccount2,jdbcType=VARCHAR},
+		#{sCreator,jdbcType=VARCHAR},
+		#{sCreatorName,jdbcType=DATE}, #{sModifier,jdbcType=VARCHAR}, #{sModifierName,jdbcType=DATE},
+		#{sMemo,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR},
+		#{remark2,jdbcType=VARCHAR},
+		#{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR},
+		#{remark6,jdbcType=VARCHAR}, #{remark7,jdbcType=VARCHAR},
+		#{remark8,jdbcType=VARCHAR},
+		#{remark9,jdbcType=VARCHAR}, #{remark10,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="update" parameterType="com.hpzc.model.tms.HpzcSupplier">
+		update hpzc_supplier
+		<set>
+			<if test="sCode != null">
+				s_code = #{sCode,jdbcType=VARCHAR},
+			</if>
+			<if test="sName != null">
+				s_name = #{sName,jdbcType=VARCHAR},
+			</if>
+			<if test="sAddress != null">
+				s_address = #{sAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="sTelName != null">
+				s_tel_name = #{sTelName,jdbcType=VARCHAR},
+			</if>
+			<if test="sTel != null">
+				s_tel = #{sTel,jdbcType=VARCHAR},
+			</if>
+			<if test="sQq != null">
+				s_qq = #{sQq,jdbcType=VARCHAR},
+			</if>
+			<if test="sWeixin != null">
+				s_weixin = #{sWeixin,jdbcType=VARCHAR},
+			</if>
+			<if test="sMail != null">
+				s_mail = #{sMail,jdbcType=VARCHAR},
+			</if>
+			<if test="sPost != null">
+				s_post = #{sPost,jdbcType=VARCHAR},
+			</if>
+			<if test="sBank1 != null">
+				s_bank1 = #{sBank1,jdbcType=VARCHAR},
+			</if>
+			<if test="sAccount1 != null">
+				s_account1 = #{sAccount1,jdbcType=VARCHAR},
+			</if>
+			<if test="sBank2 != null">
+				s_bank2 = #{sBank2,jdbcType=VARCHAR},
+			</if>
+			<if test="sAccount2 != null">
+				s_account2 = #{sAccount2,jdbcType=VARCHAR},
+			</if>
+			<if test="sCreator != null">
+				s_creator = #{sCreator,jdbcType=VARCHAR},
+			</if>
+			<if test="sCreatorName != null">
+				s_creator_name = #{sCreatorName,jdbcType=DATE},
+			</if>
+			<if test="sModifier != null">
+				s_modifier = #{sModifier,jdbcType=VARCHAR},
+			</if>
+			<if test="sModifierName != null">
+				s_modifier_name = #{sModifierName,jdbcType=DATE},
+			</if>
+			<if test="sMemo != null">
+				s_memo = #{sMemo,jdbcType=VARCHAR},
+			</if>
+			<if test="remark1 != null">
+				remark1 = #{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				remark2 = #{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="remark3 != null">
+				remark3 = #{remark3,jdbcType=VARCHAR},
+			</if>
+			<if test="remark4 != null">
+				remark4 = #{remark4,jdbcType=VARCHAR},
+			</if>
+			<if test="remark5 != null">
+				remark5 = #{remark5,jdbcType=VARCHAR},
+			</if>
+			<if test="remark6 != null">
+				remark6 = #{remark6,jdbcType=VARCHAR},
+			</if>
+			<if test="remark7 != null">
+				remark7 = #{remark7,jdbcType=VARCHAR},
+			</if>
+			<if test="remark8 != null">
+				remark8 = #{remark8,jdbcType=VARCHAR},
+			</if>
+			<if test="remark9 != null">
+				remark9 = #{remark9,jdbcType=VARCHAR},
+			</if>
+			<if test="remark10 != null">
+				remark10 = #{remark10,jdbcType=VARCHAR},
+			</if>
+			<if test="isdelete != null">
+				is_delete = #{isdelete,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where s_id = #{sId,jdbcType=VARCHAR}
+	</update>
+	
+</mapper>
