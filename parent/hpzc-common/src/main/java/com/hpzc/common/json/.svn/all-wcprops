@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json
+END
+MyDateTypeAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json/MyDateTypeAdapter.java
+END
+JsonHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json/JsonHelper.java
+END
+JsonRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json/JsonRule.java
+END
+FieldFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json/FieldFilter.java
+END
+FieldNaming.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Sinopec-CBS/!svn/ver/6193/branches/fsscbs-debug/common/src/main/java/com/pcitc/util/json/FieldNaming.java
+END
