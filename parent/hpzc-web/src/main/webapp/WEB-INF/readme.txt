@@ -1,1 +1,1 @@
-20170328进销存项目加入github关联Eclipse!
+20170328进销存项目加入github并且关联Eclipse!
