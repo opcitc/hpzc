@@ -1,5 +1,6 @@
 package com.hpzc.dao.tms;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,10 +37,14 @@ public class TestApp extends AbstractJUnit4SpringContextTests {
 
 	@Test
 	public void test1() {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("gCode", "GH-20160820001");
-		List<HpzcCgdDetail> list = hpzcDetailDao.selectByMap(map);
-		System.out.println(list.size());
+		Map<String, String> map = System.getenv();
+
+		BigDecimal bb = new BigDecimal("1.2");
+		System.out.println(bb.add(bb));
+		System.out.println(bb.subtract(bb));
+		System.out.println(bb.multiply(bb));
+		System.out.println(bb.divide(bb));
+
 	}
 
 	/*

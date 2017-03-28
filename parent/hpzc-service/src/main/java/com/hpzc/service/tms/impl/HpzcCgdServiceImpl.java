@@ -18,8 +18,7 @@ import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcCgdDetail;
 import com.hpzc.service.tms.HpzcCgdService;
 
-@Service("hpzcCgdService")
-@Transactional
+@Service
 public class HpzcCgdServiceImpl implements HpzcCgdService {
 
 	@Autowired

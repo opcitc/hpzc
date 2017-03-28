@@ -1,6 +1,8 @@
 package com.hpzc.model.tms;
 
-public class HpzcUser {
+import java.io.Serializable;
+
+public class HpzcUser implements Serializable {
 
 	private String isdelete;
 
