@@ -13,8 +13,6 @@
     http://www.springframework.org/schema/mvc  
     http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
-
-
 	<!-- 启用matrix variable -->
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven enable-matrix-variables="true">
@@ -57,7 +55,7 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
-	<!-- <property name="maxUploadSize" value="200000" /> -->
+		<!-- <property name="maxUploadSize" value="200000" /> -->
 	</bean>
 
 	<!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
@@ -67,7 +65,8 @@
 		</props> </property> </bean> -->
 
 	<!-- 引入redis属性配置文件 -->
-	<import resource="redis.xml" />
-	<import resource="rabbit.xml" />
+	<import resource="spring-redis.xml" />
+	<import resource="spring-rabbit.xml" />
+
 
 </beans>  

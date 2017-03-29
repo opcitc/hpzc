@@ -90,8 +90,7 @@ p {
 						} else if (!$('#password').validatebox('isValid')) {
 							$('#password').focus();
 						} else {
-							$
-									.ajax({
+							$.ajax({
 										url : "${pageContext.request.contextPath}/hpzcUser/indexinfo",
 										type : 'POST',
 										data : {

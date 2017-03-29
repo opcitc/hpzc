@@ -1,7 +1,10 @@
 package com.hpzc.controller;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hpzc.model.shiro.ShiroToken;
 
 @Controller
 @RequestMapping("/hpzc")
@@ -16,7 +19,7 @@ public class ServerController {
 
 	// 首页
 	@RequestMapping("/index")
-	public String index() {
+	public String index(String username, String password) {
 		return "common/index";
 	}
 

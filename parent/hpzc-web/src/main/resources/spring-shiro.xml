@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans   
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/tx   
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+            http://www.springframework.org/schema/context  
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+               ">
+
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="ShiroRealm" />
+	</bean>
+
+
+	<!-- 授权 认证 -->
+	<bean id="ShiroRealm" class="com.hpzc.model.shiro.ShiroRealm">
+	</bean>
+
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 安全管理器 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 默认的登陆访问url -->
+		<property name="loginUrl" value="/hpzc/login" />
+		<!-- 登陆成功后跳转的url -->
+		<property name="successUrl" value="/hpzc/index" />
+		<!-- 没有权限跳转的url -->
+		<property name="unauthorizedUrl" value="/unauth" />
+		<!-- 读取初始自定义权限内容 -->
+		<!-- Shiro权限过滤过滤器定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- anon 不需要认证 authc 需要认证 user 验证通过或RememberMe登录的都可以 -->
+				<!-- anon 不需要认证 authc 需要认证 user 验证通过或RememberMe登录的都可以 -->
+				<!-- 对静态资源不需要进行认证 -->
+				/easyui/** = anon
+				/js/** = anon
+				<!-- 对所有url都需要进行认证 /hpzcUser/indexinfo 验证数据 -->
+				/hpzcUser/indexinfo = anon
+				/** = user
+			</value>
+		</property>
+	</bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+</beans>  

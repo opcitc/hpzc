@@ -19,16 +19,16 @@ public class HpzcUserServiceImpl implements HpzcUserService {
 
 	@Override
 	public void save(HpzcUser hpzcUser) {
-		String password = Md5.string2MD5(hpzcUser.getPassword());
-		hpzcUser.setPassword(password);
+//		String password = Md5.string2MD5(hpzcUser.getPassword());
+//		hpzcUser.setPassword(password);
 		hpzcUserDao.insert(hpzcUser);
 
 	}
 
 	@Override
 	public void update(HpzcUser hpzcUser) {
-		String password = Md5.string2MD5(hpzcUser.getPassword());
-		hpzcUser.setPassword(password);
+//		String password = Md5.string2MD5(hpzcUser.getPassword());
+//		hpzcUser.setPassword(password);
 		hpzcUserDao.update(hpzcUser);
 	}
 

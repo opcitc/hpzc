@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import com.hpzc.common.json.JsonHelper;
 import com.hpzc.common.util.Md5;
 import com.hpzc.dao.test.HpzcTreeMapper;
 import com.hpzc.model.common.PageParam;
+import com.hpzc.model.shiro.ShiroToken;
 import com.hpzc.model.test.HpzcTree;
 import com.hpzc.model.tms.HpzcUser;
 import com.hpzc.service.tms.HpzcUserService;
@@ -103,24 +105,24 @@ public class HpzcUserController {
 		// 验证登录增加权限控制!
 		String username = request.getParameter("manager");
 		String password = request.getParameter("password");
-		String pass = Md5.string2MD5(password);
+		// String pass = Md5.string2MD5(password);
 		map.put("username", username);
-		map.put("password", pass);
-		System.out.println("IP:" + request.getRemoteAddr());
-		System.out.println("IP:" + request.getRemoteHost());
-		System.out.println("IP:" + request.getRemotePort());
-		System.out.println("IP:" + request.getRemoteUser());
-		List<HpzcUser> list = hpzcUserService.selectByQuery(map);
-		if (list != null && list.size() == 1) {
-			String user1 = list.get(0).getName();
-			// 登录成功!将用户信息放入session中
-			hession.setAttribute("user", user1);
-			System.out.println(hession.getAttribute("user"));
-			// 可以考虑加入缓存:Cookie
-			return "1";
-		} else {
-			// 登录失败!将用户信息放入session中
-			return "0";
-		}
+		map.put("password", password);
+		// shiro验证
+		ShiroToken token = new ShiroToken(username, password);
+		SecurityUtils.getSubject().login(token);
+		return "1";
+		// List<HpzcUser> list = hpzcUserService.selectByQuery(map);
+		// if (list != null && list.size() == 1) {
+		// String user1 = list.get(0).getName();
+		// // 登录成功!将用户信息放入session中
+		// hession.setAttribute("user", user1);
+		// System.out.println(hession.getAttribute("user"));
+		// // 可以考虑加入缓存:Cookie
+		// return "1";
+		// } else {
+		// // 登录失败!将用户信息放入session中
+		// return "0";
+		// }
 	}
 }

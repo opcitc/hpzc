@@ -47,38 +47,23 @@
 		<property name="filters" value="stat" />
 	</bean>
 
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		初始化连接大小
-		<property name="initialSize" value="${jdbc.initialSize}"></property>
-		连接池最大数量
-		<property name="maxActive" value="${jdbc.maxActive}"></property>
-		连接池最大空闲
-		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
-		连接池最小空闲
-		<property name="minIdle" value="${jdbc.minIdle}"></property>
-		获取连接最大等待时间
-		<property name="maxWait" value="${jdbc.maxWait}"></property>
-		removeAbandoned: 是否自动回收超时连接
-		<property name="removeAbandoned" value="true" />
-		removeAbandonedTimeout: 超时时间(以秒数为单位)
-		<property name="removeAbandonedTimeout" value="180" />
-		<property name="logAbandoned" value="true" />
-		每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开
-		minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等)
-		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> 1小时
-		<property name="minEvictableIdleTimeMillis" value="18000000" /> 5小时
-		让空闲链接回收器(如果有)进行有效性检测
-		<property name="testWhileIdle" value="true" />
-		从连接池之取出时进行有效性检测
-		<property name="testOnBorrow" value="true" />
-		归还连接池之前进行有效性检测
-		<property name="testOnReturn" value="true" />
-	</bean> -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"> <property name="driverClassName" value="${jdbc.driver}" 
+		/> <property name="url" value="${jdbc.url}" /> <property name="username" 
+		value="${jdbc.username}" /> <property name="password" value="${jdbc.password}" 
+		/> 初始化连接大小 <property name="initialSize" value="${jdbc.initialSize}"></property> 
+		连接池最大数量 <property name="maxActive" value="${jdbc.maxActive}"></property> 
+		连接池最大空闲 <property name="maxIdle" value="${jdbc.maxIdle}"></property> 连接池最小空闲 
+		<property name="minIdle" value="${jdbc.minIdle}"></property> 获取连接最大等待时间 <property 
+		name="maxWait" value="${jdbc.maxWait}"></property> removeAbandoned: 是否自动回收超时连接 
+		<property name="removeAbandoned" value="true" /> removeAbandonedTimeout: 
+		超时时间(以秒数为单位) <property name="removeAbandonedTimeout" value="180" /> <property 
+		name="logAbandoned" value="true" /> 每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 
+		minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等) <property 
+		name="timeBetweenEvictionRunsMillis" value="3600000" /> 1小时 <property name="minEvictableIdleTimeMillis" 
+		value="18000000" /> 5小时 让空闲链接回收器(如果有)进行有效性检测 <property name="testWhileIdle" 
+		value="true" /> 从连接池之取出时进行有效性检测 <property name="testOnBorrow" value="true" 
+		/> 归还连接池之前进行有效性检测 <property name="testOnReturn" value="true" /> </bean> -->
 
 	<!-- 配置sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
