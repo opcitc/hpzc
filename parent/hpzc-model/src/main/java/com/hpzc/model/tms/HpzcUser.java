@@ -4,9 +4,14 @@ import java.io.Serializable;
 
 public class HpzcUser implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String isdelete;
 
-	private String uId;
+	private int uId;
 
 	private String username;
 
@@ -46,12 +51,12 @@ public class HpzcUser implements Serializable {
 
 	private String memo;
 
-	public String getuId() {
+	public int getuId() {
 		return uId;
 	}
 
-	public void setuId(String uId) {
-		this.uId = uId == null ? null : uId.trim();
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
 
 	public String getUsername() {

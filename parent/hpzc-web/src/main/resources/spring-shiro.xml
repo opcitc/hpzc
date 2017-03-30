@@ -8,7 +8,11 @@
             http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
             http://www.springframework.org/schema/context  
             http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-               ">
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd -->
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd -->
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd -->
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -19,6 +23,11 @@
 	<!-- 授权 认证 -->
 	<bean id="ShiroRealm" class="com.hpzc.model.shiro.ShiroRealm">
 	</bean>
+
+	<!-- 认证数据库存储 -->
+	<bean id="login" class="com.hpzc.model.shiro.LoginFilter" />
+	<bean id="role" class="com.hpzc.model.shiro.RoleFilter" />
+	<bean id="permission" class="com.hpzc.model.shiro.PermissionFilter" />
 
 
 	<!-- Shiro Filter -->
@@ -45,6 +54,14 @@
 				/** = user
 			</value>
 		</property>
+		<property name="filters">
+			<map>
+				<entry key="login" value-ref="login"></entry>
+				<entry key="role" value-ref="role"></entry>
+				<entry key="permission" value-ref="permission"></entry>
+			</map>
+		</property>
+
 	</bean>
 
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />

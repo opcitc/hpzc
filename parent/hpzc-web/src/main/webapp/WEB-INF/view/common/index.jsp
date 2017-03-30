@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page import="com.hpzc.model.tms.*"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,15 +48,18 @@ a:hover {
 </head>
 
 <body class="easyui-layout">
-
+    <shiro:hasAnyRoles name='888888,100002'>
 	<div
 		data-options="region:'north',title:'header',split:true,noheader:true"
 		style="height: 60px; background: #666;">
+		<shiro:hasPermission name="/hpzc/hpzcUser">
 		<div class="logo">后台管理</div>
+		</shiro:hasPermission>
 		<div class="logout">
 			您好!|<a href="http://localhost:8090/hpzc-web/hpzc/login">退出</a>
 		</div>
 	</div>
+	</shiro:hasAnyRoles>
 	<div
 		data-options="region:'south',title:'footer',
 		split:true,noheader:true"

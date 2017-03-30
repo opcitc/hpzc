@@ -38,7 +38,7 @@ public class bootstrapController {
 	public void saveUser(@RequestParam String username, @RequestParam String password, @RequestParam String name,
 			@RequestParam String mail) {
 		HpzcUser hpzcUser = new HpzcUser();
-		hpzcUser.setuId(UUID.getUUID());
+		// hpzcUser.setuId(UUID.getUUID()); int 自增
 		hpzcUser.setUsername(username);
 		hpzcUser.setPassword(password);
 		hpzcUser.setName(name);
@@ -47,10 +47,11 @@ public class bootstrapController {
 		hpzcUserDao.insert(hpzcUser);
 		// return gson.toJson(hpzcUser);
 	}
+
 	@ResponseBody
 	@RequestMapping("/updateUser")
-	public void updateUser(@RequestParam String id,@RequestParam String uId,@RequestParam String username, @RequestParam String password, @RequestParam String name,
-			@RequestParam String mail) {
+	public void updateUser(@RequestParam String id, @RequestParam int uId, @RequestParam String username,
+			@RequestParam String password, @RequestParam String name, @RequestParam String mail) {
 		HpzcUser hpzcUser = new HpzcUser();
 		hpzcUser.setuId(uId);
 		hpzcUser.setUsername(username);

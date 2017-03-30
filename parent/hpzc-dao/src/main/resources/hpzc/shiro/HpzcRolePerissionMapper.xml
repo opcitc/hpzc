@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.shiro.HpzcRolePerissionMapper">
+	<resultMap id="BaseResultMap" type="com.hpzc.model.shiro.HpzcRolePerission">
+		<result column="rid" property="rid" jdbcType="BIGINT" />
+		<result column="pid" property="pid" jdbcType="BIGINT" />
+	</resultMap>
+
+
+	<insert id="insert" parameterType="com.hpzc.model.shiro.HpzcRolePerission">
+		insert into
+		hpzc_role_permission (rid, pid)
+		values (#{rid,jdbcType=BIGINT},
+		#{pid,jdbcType=BIGINT})
+	</insert>
+	
+	
+
+</mapper>

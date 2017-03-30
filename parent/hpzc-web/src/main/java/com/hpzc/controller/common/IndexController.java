@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	@RequestMapping("/tttindex")
 	public String index() {
-		System.out.println(12);
-		return "easyui/tabs";
+		System.out.println("无权限");
+		return "tms/tms";
 	}
 
 }

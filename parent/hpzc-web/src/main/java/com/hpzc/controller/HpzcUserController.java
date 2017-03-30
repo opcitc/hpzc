@@ -79,7 +79,7 @@ public class HpzcUserController {
 		String[] str = hIds.split(",");
 		for (int i = 0; i < str.length; i++) {
 			HpzcUser hpzcUser = new HpzcUser();
-			hpzcUser.setuId(str[i]);
+			hpzcUser.setuId(Integer.valueOf(str[i]));// 注意ID类型是否有错
 			hpzcUser.setIsdelete("1");
 			hpzcUserService.update(hpzcUser);
 		}
@@ -106,8 +106,6 @@ public class HpzcUserController {
 		String username = request.getParameter("manager");
 		String password = request.getParameter("password");
 		// String pass = Md5.string2MD5(password);
-		map.put("username", username);
-		map.put("password", password);
 		// shiro验证
 		ShiroToken token = new ShiroToken(username, password);
 		SecurityUtils.getSubject().login(token);

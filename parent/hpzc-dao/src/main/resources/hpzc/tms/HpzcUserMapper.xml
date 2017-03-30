@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hpzc.dao.tms.HpzcUserMapper">
 	<resultMap id="BaseResultMap" type="com.hpzc.model.tms.HpzcUser">
-		<id column="u_id" property="uId" jdbcType="VARCHAR" />
+		<id column="u_id" property="uId" jdbcType="INTEGER" />
 		<result column="is_delete" property="isdelete" jdbcType="VARCHAR" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
@@ -76,7 +76,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from hpzc_user
-		where u_id = #{uId,jdbcType=VARCHAR}
+		where u_id = #{uId,jdbcType=INTEGER}
 	</select>
 
 	<insert id="insert" parameterType="com.hpzc.model.tms.HpzcUser">
@@ -145,7 +145,7 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="uId != null">
-				#{uId,jdbcType=VARCHAR},
+				#{uId,jdbcType=INTEGER},
 			</if>
 			<if test="username != null">
 				#{username,jdbcType=VARCHAR},
@@ -270,7 +270,7 @@
 				is_delete = #{isdelete,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where u_id = #{uId,jdbcType=VARCHAR}
+		where u_id = #{uId,jdbcType=INTEGER}
 	</update>
 
 </mapper>

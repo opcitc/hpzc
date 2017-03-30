@@ -47,7 +47,6 @@ public class easyController {
 	public void saveUser(@RequestParam String username, @RequestParam String password, @RequestParam String name,
 			@RequestParam String mail) {
 		HpzcUser hpzcUser = new HpzcUser();
-		hpzcUser.setuId(UUID.getUUID());
 		hpzcUser.setUsername(username);
 		hpzcUser.setPassword(password);
 		hpzcUser.setName(name);
@@ -59,7 +58,7 @@ public class easyController {
 
 	@ResponseBody
 	@RequestMapping("/updateUser")
-	public void updateUser(@RequestParam String id, @RequestParam String uId, @RequestParam String username,
+	public void updateUser(@RequestParam String id, @RequestParam int uId, @RequestParam String username,
 			@RequestParam String password, @RequestParam String name, @RequestParam String mail) {
 		HpzcUser hpzcUser = new HpzcUser();
 		hpzcUser.setuId(uId);
