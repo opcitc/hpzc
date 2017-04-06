@@ -27,13 +27,14 @@ public class TestCommon extends AbstractJUnit4SpringContextTests {
 	private HpzcCgdMapper hpzcCgdDao;
 	@Autowired
 	private HpzcXsdMapper hpzcXsdDao;
+	
 	SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
 
 	@Test
 	public void test() {
-		hpzc.selectPermissions(1);
-		System.out.println(1);
+		
+		
+		
 	}
-//	594C2F6E7594683B3ADA98506ECA2F0D
 
 }

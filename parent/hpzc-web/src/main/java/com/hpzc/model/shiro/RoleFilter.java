@@ -29,8 +29,8 @@ import org.apache.shiro.web.util.WebUtils;
  */
 public class RoleFilter extends AccessControlFilter {
 
-	static final String LOGIN_URL = "http://localhost:8090/hpzc/login";
-	static final String UNAUTHORIZED_URL = "http://localhost:8090/hpzcWest/tttindex";
+	static final String LOGIN_URL = "http://localhost:8090/hpzc-web/login";
+	static final String UNAUTHORIZED_URL = "http://localhost:8090/hpzc-web/hpzcWest/tttindex";
 	
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request,
@@ -38,9 +38,11 @@ public class RoleFilter extends AccessControlFilter {
 		String[] arra = (String[])mappedValue;
 		
 		Subject subject = getSubject(request, response);
-		for (String role : arra) {
-			if(subject.hasRole("role:" + role)){
-				return true;
+		if(arra!=null&&arra.length>0){
+			for (String role : arra) {
+				if(subject.hasRole("role:" + role)){
+					return true;
+				}
 			}
 		}
 		return false;

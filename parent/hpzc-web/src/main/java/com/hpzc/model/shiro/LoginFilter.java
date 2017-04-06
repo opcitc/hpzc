@@ -7,6 +7,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.AccessControlFilter;
 
 import com.hpzc.model.tms.HpzcUser;
@@ -39,8 +40,8 @@ public class LoginFilter extends AccessControlFilter {
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue)
 			throws Exception {
-
-		HpzcUser token = (HpzcUser) SecurityUtils.getSubject();
+		// 获取用户实体
+		HpzcUser token = (HpzcUser) SecurityUtils.getSubject().getPrincipal();
 
 		if (null != token || isLoginRequest(request, response)) {// &&
 																	// isEnabled()

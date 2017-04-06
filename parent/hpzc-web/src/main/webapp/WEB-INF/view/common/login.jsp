@@ -91,7 +91,7 @@ p {
 							$('#password').focus();
 						} else {
 							$.ajax({
-										url : "${pageContext.request.contextPath}/hpzcUser/indexinfo",
+										url : "${pageContext.request.contextPath}/hpzc/indexinfo",
 										type : 'POST',
 										data : {
 											manager : $('#manager').val(),

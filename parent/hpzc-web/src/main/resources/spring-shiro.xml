@@ -8,11 +8,12 @@
             http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
             http://www.springframework.org/schema/context  
             http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd -->
-            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd -->
-            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd -->
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+            http://www.springframework.org/schema/util 
+            http://www.springframework.org/schema/util/spring-util-3.0.xsd
+            ">
+
 
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -42,6 +43,13 @@
 		<property name="unauthorizedUrl" value="/unauth" />
 		<!-- 读取初始自定义权限内容 -->
 		<!-- Shiro权限过滤过滤器定义 -->
+		<property name="filters">
+			<map>
+				<entry key="login" value-ref="login"></entry>
+				<entry key="role" value-ref="role"></entry>
+				<entry key="permission" value-ref="permission"></entry>
+			</map>
+		</property>
 		<property name="filterChainDefinitions">
 			<value>
 				<!-- anon 不需要认证 authc 需要认证 user 验证通过或RememberMe登录的都可以 -->
@@ -50,17 +58,13 @@
 				/easyui/** = anon
 				/js/** = anon
 				<!-- 对所有url都需要进行认证 /hpzcUser/indexinfo 验证数据 -->
-				/hpzcUser/indexinfo = anon
+				/hpzc/indexinfo = anon
+				/hpzc/login = anon
 				/** = user
+				<!-- /** = login,role,permission -->
 			</value>
 		</property>
-		<property name="filters">
-			<map>
-				<entry key="login" value-ref="login"></entry>
-				<entry key="role" value-ref="role"></entry>
-				<entry key="permission" value-ref="permission"></entry>
-			</map>
-		</property>
+
 
 	</bean>
 
