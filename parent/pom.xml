@@ -180,27 +180,26 @@
 			<artifactId>shiro-web</artifactId>
 			<version>${shiro.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-quartz</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-quartz</artifactId> 
+			<version>${shiro.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
 			<version>${shiro.version}</version>
 		</dependency>
 		<!-- 定时任务 -->
-		<dependency>
-			<artifactId>quartz</artifactId>
-			<groupId>org.opensymphony.quartz</groupId>
-			<version>1.6.1</version>
-		</dependency>
+		<!-- <dependency> <artifactId>quartz</artifactId> <groupId>org.opensymphony.quartz</groupId> 
+			<version>1.6.1</version> </dependency> -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
-			<version>2.2.2</version>
+			<version>2.2.1</version>
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>2.2.1</version>
+		</dependency> -->
 
 
 

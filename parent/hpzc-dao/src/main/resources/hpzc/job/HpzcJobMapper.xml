@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpzc.dao.job.HpzcJobMapper" >
+  <resultMap id="BaseResultMap" type="com.hpzc.model.job.HpzcJob" >
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_group" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="job_status" property="jobStatus" jdbcType="CHAR" />
+    <result column="job_time" property="jobTime" jdbcType="VARCHAR" />
+    <result column="job_meme" property="jobMeme" jdbcType="VARCHAR" />
+    <result column="job_by1" property="jobBy1" jdbcType="VARCHAR" />
+    <result column="job_by2" property="jobBy2" jdbcType="VARCHAR" />
+    <result column="job_by3" property="jobBy3" jdbcType="VARCHAR" />
+    <result column="job_by4" property="jobBy4" jdbcType="VARCHAR" />
+    <result column="job_by5" property="jobBy5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    job_id, job_name, job_group, job_status, job_time, job_meme, job_by1, job_by2, job_by3, 
+    job_by4, job_by5
+  </sql>
+  <select id="selectByKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hpzc_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByKey" parameterType="java.lang.Integer" >
+    delete from hpzc_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hpzc.model.job.HpzcJob" >
+    insert into hpzc_job (job_id, job_name, job_group, 
+      job_status, job_time, job_meme, 
+      job_by1, job_by2, job_by3, 
+      job_by4, job_by5)
+    values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobGroup,jdbcType=VARCHAR}, 
+      #{jobStatus,jdbcType=CHAR}, #{jobTime,jdbcType=VARCHAR}, #{jobMeme,jdbcType=VARCHAR}, 
+      #{jobBy1,jdbcType=VARCHAR}, #{jobBy2,jdbcType=VARCHAR}, #{jobBy3,jdbcType=VARCHAR}, 
+      #{jobBy4,jdbcType=VARCHAR}, #{jobBy5,jdbcType=VARCHAR})
+  </insert>
+ 
+  <update id="update" parameterType="com.hpzc.model.job.HpzcJob" >
+    update hpzc_job
+    <set >
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        job_group = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        job_status = #{jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="jobTime != null" >
+        job_time = #{jobTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jobMeme != null" >
+        job_meme = #{jobMeme,jdbcType=VARCHAR},
+      </if>
+      <if test="jobBy1 != null" >
+        job_by1 = #{jobBy1,jdbcType=VARCHAR},
+      </if>
+      <if test="jobBy2 != null" >
+        job_by2 = #{jobBy2,jdbcType=VARCHAR},
+      </if>
+      <if test="jobBy3 != null" >
+        job_by3 = #{jobBy3,jdbcType=VARCHAR},
+      </if>
+      <if test="jobBy4 != null" >
+        job_by4 = #{jobBy4,jdbcType=VARCHAR},
+      </if>
+      <if test="jobBy5 != null" >
+        job_by5 = #{jobBy5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

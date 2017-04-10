@@ -58,9 +58,9 @@
 				/easyui/** = anon
 				/js/** = anon
 				<!-- 对所有url都需要进行认证 /hpzcUser/indexinfo 验证数据 -->
-				/hpzc/indexinfo = anon
+				<!-- /hpzc/indexinfo = anon
 				/hpzc/login = anon
-				/** = user
+				/** = user -->
 				<!-- /** = login,role,permission -->
 			</value>
 		</property>
