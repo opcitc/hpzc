@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,11 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-  var tms = ${tmsa} </br>
-  <tr>
-  <td> ${tms.name} </td>
-  <td> ${tms.age} </td>
-   </tr>
-   </br>
+
+	jkfdsajf
+
+	<input type="button" onclick="exportExcel()" />
 </body>
+
+<script>
+	function exportExcel() {
+		location.href = "${pageContext.request.contextPath}/execl";
+	}
+</script>
 </html>
