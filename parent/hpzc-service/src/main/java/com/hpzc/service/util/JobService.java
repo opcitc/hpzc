@@ -19,4 +19,10 @@ public interface JobService {
 	// 任务查询
 	public List<HpzcJob> selectByMap(Map<String, Object> map);
 
+	// 暂停任务
+	public void stopJob(String name, String group);
+
+	// 恢复任务
+	public void restartJob(String name, String group);
+
 }

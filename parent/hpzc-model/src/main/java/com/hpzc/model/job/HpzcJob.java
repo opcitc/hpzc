@@ -1,8 +1,15 @@
 package com.hpzc.model.job;
 
-public class HpzcJob {
-	
-	
+import java.io.Serializable;
+
+import org.quartz.Job;
+
+public class HpzcJob implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Integer jobId;
 
@@ -15,6 +22,8 @@ public class HpzcJob {
 	private String jobTime;
 
 	private String jobMeme;
+
+	private String className;
 
 	private String jobBy1;
 
@@ -114,11 +123,20 @@ public class HpzcJob {
 		this.jobBy5 = jobBy5 == null ? null : jobBy5.trim();
 	}
 
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
 	@Override
 	public String toString() {
 		return "HpzcJob [jobId=" + jobId + ", jobName=" + jobName + ", jobGroup=" + jobGroup + ", jobStatus="
-				+ jobStatus + ", jobTime=" + jobTime + ", jobMeme=" + jobMeme + ", jobBy1=" + jobBy1 + ", jobBy2="
-				+ jobBy2 + ", jobBy3=" + jobBy3 + ", jobBy4=" + jobBy4 + ", jobBy5=" + jobBy5 + "]";
+				+ jobStatus + ", jobTime=" + jobTime + ", jobMeme=" + jobMeme + ", className=" + className + ", jobBy1="
+				+ jobBy1 + ", jobBy2=" + jobBy2 + ", jobBy3=" + jobBy3 + ", jobBy4=" + jobBy4 + ", jobBy5=" + jobBy5
+				+ "]";
 	}
 
 }

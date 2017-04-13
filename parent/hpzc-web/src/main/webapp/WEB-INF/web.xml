@@ -12,10 +12,11 @@
 		    classpath:spring-service.xml,
 		    classpath:spring-quartz.xml,
 		    classpath:spring-shiro.xml
+		    
         </param-value>
 	</context-param>
-	
-	
+
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

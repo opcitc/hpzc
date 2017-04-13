@@ -66,9 +66,18 @@ public class JobManager {
 		// 同步或异步
 		// Class<? extends Job> jobClass = isSync ? JobSyncFactory.class :
 		// JobFactory.class;
-		Class<? extends Job> jobClass = JobAction.class;
+		// Class<? extends Job> jobClass = JobAction.class;
+		HpzcJob hpzcJob= (HpzcJob) param;
+		@SuppressWarnings("rawtypes")
+		Class job = null;
+		try {
+			job = Class.forName(hpzcJob.getClassName());
+		} catch (ClassNotFoundException e1) {
+//			log.error("任务类没找到");
+			e1.printStackTrace();
+		}
 		// 构建job信息
-		JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroup).build();
+		JobDetail jobDetail = JobBuilder.newJob(job).withIdentity(jobName, jobGroup).build();
 
 		// 放入参数，运行时的方法可以获取
 		jobDetail.getJobDataMap().put("scheduleJob", param);
@@ -82,6 +91,9 @@ public class JobManager {
 
 		try {
 			scheduler.scheduleJob(jobDetail, trigger);
+			if (!scheduler.isShutdown()) {
+				scheduler.start();
+			}
 		} catch (SchedulerException e) {
 			// LOG.error("创建定时任务失败", e);
 			// throw new ScheduleException("创建定时任务失败");
@@ -142,20 +154,6 @@ public class JobManager {
 	}
 
 	/**
-	 * 获取jobKey
-	 *
-	 * @param jobName
-	 *            the job name
-	 * @param jobGroup
-	 *            the job group
-	 * @return the job key
-	 */
-	public static JobKey getJobKey(String jobName, String jobGroup) {
-
-		return JobKey.jobKey(jobName, jobGroup);
-	}
-
-	/**
 	 * 更新定时任务
 	 *
 	 * @param scheduler
@@ -204,7 +202,7 @@ public class JobManager {
 	 */
 	public static void deleteScheduleJob(Scheduler scheduler, String jobName, String jobGroup) {
 		try {
-			scheduler.deleteJob(getJobKey(jobName, jobGroup));
+			scheduler.deleteJob(JobKey.jobKey(jobName, jobGroup));
 		} catch (SchedulerException e) {
 			// LOG.error("删除定时任务失败", e);
 			// throw new ScheduleException("删除定时任务失败");

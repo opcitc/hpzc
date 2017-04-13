@@ -1,11 +1,17 @@
 package com.hpzc.service.util.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.ws.WebServiceClient;
 
+import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,25 +31,25 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public void addJob(HpzcJob hpzcJob) {
-		// HpzcJob hpzcJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
+		
 		JobManager.createScheduleJob(scheduler, hpzcJob);
-		hpzcJobDao.insert(hpzcJob);
+//		hpzcJobDao.insert(hpzcJob);
 
 	}
 
 	@Override
 	public void update(HpzcJob hpzcJob) {
 		JobManager.updateScheduleJob(scheduler, hpzcJob);
-		hpzcJobDao.update(hpzcJob);
+//		hpzcJobDao.update(hpzcJob);
 	}
 
 	@Override
 	public void delete(int jobId) {
-		HpzcJob job = hpzcJobDao.selectByKey(jobId);
+//		HpzcJob job = hpzcJobDao.selectByKey(jobId);
 		// 删除运行的任务
-		JobManager.deleteScheduleJob(scheduler, job.getJobName(), job.getJobGroup());
+		JobManager.deleteScheduleJob(scheduler, "jobName1","dataWork2");
 		// 删除数据
-		hpzcJobDao.deleteByKey(jobId);
+//		hpzcJobDao.deleteByKey(jobId);
 
 	}
 
@@ -51,6 +57,27 @@ public class JobServiceImpl implements JobService {
 	public List<HpzcJob> selectByMap(Map<String, Object> map) {
 		HpzcJob job = hpzcJobDao.selectByKey(12);
 		return null;
+	}
+
+	@Override
+	public void stopJob(String name, String group) {
+		JobKey key = JobKey.jobKey(name, group);
+		try {
+			scheduler.pauseJob(key);
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void restartJob(String name, String group) {
+		JobKey key = JobKey.jobKey(name, group);
+		try {
+			scheduler.resumeJob(key);
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

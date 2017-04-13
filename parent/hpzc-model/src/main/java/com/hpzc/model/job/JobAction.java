@@ -1,10 +1,10 @@
-package com.hpzc.service.util;
+package com.hpzc.model.job;
+
+import java.util.Date;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-
-import com.hpzc.model.job.HpzcJob;
 
 public class JobAction implements Job {
 
@@ -14,7 +14,7 @@ public class JobAction implements Job {
 		System.out.println("任务测试");
 
 		HpzcJob detailInfo = (HpzcJob) jobText.getMergedJobDataMap().get("scheduleJob");
-
+		System.out.println("test" + new Date());
 		System.out.println(detailInfo);
 
 	}
