@@ -42,6 +42,9 @@ public class IndexController {
 
 	@RequestMapping("execl")
 	public String execl(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+//		request.getParameter("file");
+		System.out.println(request.getParameter("file"));
 		List<Student> list = new ArrayList<Student>();
 		Student student = new Student();
 		student.setSno(12);

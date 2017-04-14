@@ -8,9 +8,12 @@
 </head>
 <body>
 
-	jkfdsajf
 
-	<input type="button" onclick="exportExcel()" />
+	<!-- <input type="button" onclick="exportExcel()" /> -->
+	<form action="${pageContext.request.contextPath}/execl"
+		enctype="multipart/form-data" method="post">
+			type="submit" value="提交">
+	</form>
 </body>
 
 <script>

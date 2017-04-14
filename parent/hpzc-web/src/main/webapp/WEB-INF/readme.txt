@@ -17,3 +17,5 @@ druid: 监控访问:
 			</shiro:hasPermission>
 		</div>
 	 </shiro:hasAnyRoles>
+	 
+20170414:kaptcha验证码验证

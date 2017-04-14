@@ -45,17 +45,45 @@ p {
 		<p>
 			密码:<input type="password" id="password" class="textbox">
 		</p>
+		<p>
+			验证码:<input name="kaptcha" type="text" id="kaptcha" maxlength="4"
+				class="form-control" /> <br /> <img
+				src="${pageContext.request.contextPath}/getCaptchaImage.htm" id="kaptchaImage"
+				style="margin-bottom: -3px" /><a href="#" onclick="changeCode()">看不清?换一张</a>
+		</p>
 	</div>
 	<div id="btn">
 		<a href="#" class="easyui-linkbutton">登录</a>
 	</div>
 </body>
+
+<script type="text/javascript"> 
+
+$(function(){  //生成验证码           
+    $('#kaptchaImage').click(function () {    
+    $(this).hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage.htm?' + Math.floor(Math.random()*100) ).fadeIn(); });        
+});     
+   
+window.onbeforeunload = function(){    
+    //关闭窗口时自动退出    
+    if(event.clientX>360&&event.clientY<0||event.altKey){       
+        alert(parent.document.location);    
+    }    
+};    
+               
+function changeCode() {  //刷新  
+    $('#kaptchaImage').hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage.htm?' + Math.floor(Math.random()*100) ).fadeIn();    
+   /*  event.cancelBubble=true;    */ 
+}    
+</script>  
+
+
 <script>
 	//弹出对话框进行登录
 	$('#login').dialog({
 		title : "欢迎登录",
 		width : 300,
-		height : 180,
+		height : 350,
 		modal : true,
 		iconCls : 'icon-login',
 		buttons : '#btn',
