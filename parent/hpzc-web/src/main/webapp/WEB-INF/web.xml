@@ -11,11 +11,12 @@
 		    classpath:spring-mybatis.xml,
 		    classpath:spring-service.xml,
 		    classpath:spring-quartz.xml,
+		    classpath:spring-cxf.xml,
 		    classpath:spring-shiro.xml
-		    
         </param-value>
 	</context-param>
 
+	<!-- classpath:spring-dubbo.xml, -->
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>

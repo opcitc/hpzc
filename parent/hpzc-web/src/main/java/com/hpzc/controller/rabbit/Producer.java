@@ -15,7 +15,6 @@ public class Producer {
 		try {
 			System.out.println(rabbitTemplate.getConnectionFactory().getHost());
 			System.out.println(rabbitTemplate.getConnectionFactory().getPort());
-
 			// 发送信息
 			rabbitTemplate.convertAndSend(msg.getExchange(), msg.getRouteKey(), msg.getParams().toString());
 

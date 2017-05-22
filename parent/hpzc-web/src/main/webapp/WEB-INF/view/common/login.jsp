@@ -46,7 +46,7 @@ p {
 			密码:<input type="password" id="password" class="textbox">
 		</p>
 		<p>
-			验证码:<input name="kaptcha" type="text" id="kaptcha" maxlength="4"
+			验证码:<input  type="text" id="kaptcha" maxlength="4"
 				class="form-control" /> <br /> <img
 				src="${pageContext.request.contextPath}/getCaptchaImage.htm" id="kaptchaImage"
 				style="margin-bottom: -3px" /><a href="#" onclick="changeCode()">看不清?换一张</a>
@@ -124,6 +124,7 @@ function changeCode() {  //刷新
 										data : {
 											manager : $('#manager').val(),
 											password : $('#password').val(),
+											kaptcha : $('#kaptcha').val(),
 										},
 										beforeSend : function() {
 											$.messager.progress({

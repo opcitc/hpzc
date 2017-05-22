@@ -57,10 +57,10 @@ public class ShiroRealm extends AuthorizingRealm {
 		HpzcUser user = (HpzcUser) principals.getPrimaryPrincipal();
 		int uid = user.getuId();
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-		// 根据用户ID查询角色（role），放入到Authorization里。
+		// 根据用户ID查询角色(role),放入到Authorization里。
 		Set<String> roles = hpzcUserService.selectRoles(uid);
 		info.setRoles(roles);
-		// // 根据用户ID查询权限（permission），放入到Authorization里。
+		// // 根据用户ID查询权限(permission),放入到Authorization里。
 		Set<String> permissions = hpzcUserService.selectPermissions(uid);
 		info.setStringPermissions(permissions);
 		return info;

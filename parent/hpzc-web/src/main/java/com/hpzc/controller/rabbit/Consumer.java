@@ -18,9 +18,8 @@ public class Consumer {
 		System.out.println(rabbitMessage.getRouteKey());
 		System.out.println(rabbitMessage.getParams().toString());
 		System.out.println(rabbitTemplate.receiveAndConvert(rabbitMessage.getRouteKey()));
-		// System.out.println(rabbitTemplate.convertSendAndReceive(rabbitMessage));
-		// System.out.println(rabbitTemplate.convertSendAndReceive(rabbitMessage.getRouteKey(),
-		// rabbitMessage));
+		System.out.println(rabbitTemplate.convertSendAndReceive(rabbitMessage));
+		System.out.println(rabbitTemplate.convertSendAndReceive(rabbitMessage.getRouteKey(), rabbitMessage));
 
 	}
 
