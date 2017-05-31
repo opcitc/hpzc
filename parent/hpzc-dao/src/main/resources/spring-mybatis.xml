@@ -70,6 +70,21 @@
 		<!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:hpzc/*/*.xml" />
+		<!-- 为com.red.packet.po包下的所有实体类配置别名（mybatis 3.2.8以上版本） -->
+		<property name="typeAliasesPackage" value="com.hpzc.model.**" />
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<value>
+							helperDialect=mysql
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+
+
 	</bean>
 	<!-- 配置扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

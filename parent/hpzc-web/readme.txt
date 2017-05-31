@@ -46,4 +46,5 @@ Mq基础知识:
 20170522:redis
          需启动redis数据库:可通过可视化工具查看数据库数据(RedisDesktopManager)
          配置模板工厂,增删查改的相关方法,方法已封装,参考hibernate和quartz
- 
+
+20170531:pagehelper   mabatis 分页插件
