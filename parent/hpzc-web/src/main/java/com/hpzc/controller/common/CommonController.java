@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,11 +19,10 @@ import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
 @Controller
-public class commonController {
+public class CommonController {
 
 	@Autowired
 	private Producer captchaProducer = null;
-
 
 	@RequestMapping("kaptcha")
 	public String kaptcha() {
@@ -32,7 +30,7 @@ public class commonController {
 		return "tms/kaptcha";
 	}
 
-	@RequestMapping(value = "/getCaptchaImage.htm")
+	@RequestMapping(value = "/getCaptchaImage")
 	public ModelAndView getCaptchaImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String code = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);

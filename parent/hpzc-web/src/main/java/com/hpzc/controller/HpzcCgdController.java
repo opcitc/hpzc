@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hpzc.common.json.JsonHelper;
-import com.hpzc.model.common.PageParam;
+import com.hpzc.dao.page.Page;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcCgdDetail;
 import com.hpzc.service.tms.HpzcCgdService;
@@ -27,10 +28,9 @@ public class HpzcCgdController {
 	@Autowired
 	private HpzcCgdService hpzcCgdService;
 
-	Map<String, Object> map = new HashMap<String, Object>();
-
 	@RequestMapping("/hpzcCgdDetail")
-	public String hpzcCgdDetail(Model mm,String gCode) {
+	public String hpzcCgdDetail(Model mm, String gCode) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hCode", gCode);
 		List<HpzcCgd> list = hpzcCgdService.selectByQuery(map);
 		HpzcCgd hpzcCgd = list.get(0);
@@ -49,7 +49,7 @@ public class HpzcCgdController {
 	// 保存新增采购单详情数据
 	@ResponseBody
 	@RequestMapping("/hpzcCgdDetailSave")
-	public String hpzcCgdSaveDetailJson(Model mm, @RequestParam String row,String gCode) {
+	public String hpzcCgdSaveDetailJson(Model mm, @RequestParam String row, String gCode) {
 		HpzcCgdDetail hpzcCgdDetail = (HpzcCgdDetail) JsonHelper.encodeJsonToObject(row, HpzcCgdDetail.class);
 		hpzcCgdDetail.setgCode(gCode);
 		hpzcCgdService.saveDetail(hpzcCgdDetail);

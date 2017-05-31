@@ -3,6 +3,8 @@ package com.hpzc.service.tms;
 import java.util.List;
 import java.util.Map;
 
+import com.hpzc.dao.page.Page;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcCgdDetail;
 import com.hpzc.redis.dao.Member;
@@ -80,5 +82,14 @@ public interface HpzcCgdService {
 	 * @return ： 2016年10月8日 上午11:11:37
 	 */
 	public List<HpzcCgdDetail> selectByQueryDetail(String gCode);
+
+	/**
+	 * @Description : 通过id批量查询采购单
+	 * @author : zhengguohui
+	 * @param String[]
+	 * @return
+	 * @time : 2017年5月24日 上午10:52:40
+	 */
+	public List<HpzcCgd> selectByIds(String[] ids);
 
 }

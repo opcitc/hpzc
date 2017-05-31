@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hpzc-parent</groupId>
 	<artifactId>parent</artifactId>
@@ -209,11 +210,14 @@
 		</dependency>
 
 		<!-- 导出EXCEL -->
-		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi</artifactId> 
-			<version>3.6</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+	    <version>3.7</version>
+		</dependency>
 
 		<!-- 导出EXCEL.DOC.PDF等 -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.jeecg</groupId>
 			<artifactId>easypoi-base</artifactId>
 			<version>2.3.1</version>
@@ -227,7 +231,7 @@
 			<groupId>org.jeecg</groupId>
 			<artifactId>easypoi-annotation</artifactId>
 			<version>2.3.1</version>
-		</dependency>
+		</dependency> -->
 		<!-- 集群分布式 -->
 		<!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
 		<dependency>
@@ -287,6 +291,6 @@
 		<module>hpzc-web</module>
 		<module>hpzc-common</module>
 		<module>?</module>
-    <module>hpzc-interface</module>
-  </modules>
+		<module>hpzc-interface</module>
+	</modules>
 </project>

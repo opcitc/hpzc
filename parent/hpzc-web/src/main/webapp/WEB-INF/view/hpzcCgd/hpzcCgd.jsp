@@ -273,7 +273,7 @@
 								text : '导出',
 								iconCls : 'icon-save',
 								handler : function() {
-									openDialog("add_dialog", "edit");
+									exportPurchase();
 								}
 							}, '-', {
 								text : '查询',
@@ -295,6 +295,21 @@
 								}
 							} ]
 						})
+	}
+
+	function exportPurchase() {
+		var rows = $('#cgd').datagrid('getSelections');
+		if (rows.length == 0) {
+			$.messager.alert('警告!', '查看采购单想详情时最少选择一行!', 'waring');
+		} else {
+			var ids = new Array();
+			for (var i = 0; i < rows.length; i++) {
+				ids.push(rows[i].hId);
+			}
+			window.location.href = "${pageContext.request.contextPath}/export/purchase?ids="
+					+ ids;
+		}
+
 	}
 
 	function addDetail() {

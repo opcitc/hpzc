@@ -48,7 +48,7 @@ p {
 		<p>
 			验证码:<input  type="text" id="kaptcha" maxlength="4"
 				class="form-control" /> <br /> <img
-				src="${pageContext.request.contextPath}/getCaptchaImage.htm" id="kaptchaImage"
+				src="${pageContext.request.contextPath}/getCaptchaImage" id="kaptchaImage"
 				style="margin-bottom: -3px" /><a href="#" onclick="changeCode()">看不清?换一张</a>
 		</p>
 	</div>
@@ -61,7 +61,7 @@ p {
 
 $(function(){  //生成验证码           
     $('#kaptchaImage').click(function () {    
-    $(this).hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage.htm?' + Math.floor(Math.random()*100) ).fadeIn(); });        
+    $(this).hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn(); });        
 });     
    
 window.onbeforeunload = function(){    
@@ -72,7 +72,7 @@ window.onbeforeunload = function(){
 };    
                
 function changeCode() {  //刷新  
-    $('#kaptchaImage').hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage.htm?' + Math.floor(Math.random()*100) ).fadeIn();    
+    $('#kaptchaImage').hide().attr('src', '${pageContext.request.contextPath}/getCaptchaImage?' + Math.floor(Math.random()*100) ).fadeIn();    
    /*  event.cancelBubble=true;    */ 
 }    
 </script>  

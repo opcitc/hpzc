@@ -19,4 +19,7 @@ public interface HpzcCgdMapper {
 
 	int selectByMax(String str);
 
+	// 通过id批量查询采购单
+	List<HpzcCgd> batchQuery(String[] ids);
+
 }

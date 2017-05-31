@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hpzc.common.json.JsonHelper;
-import com.hpzc.model.common.PageParam;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcCgdDetail;
 import com.hpzc.model.tms.HpzcXsd;

@@ -34,7 +34,7 @@ public class IndexController {
 	@RequestMapping("ece")
 	public String ece() {
 		System.out.println("ece");
-		return "tms/tmsa";
+		return "tms/poi";
 	}
 
 	@Autowired

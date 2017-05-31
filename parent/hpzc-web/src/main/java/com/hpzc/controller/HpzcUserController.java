@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hpzc.common.json.JsonHelper;
 import com.hpzc.common.util.Md5;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.dao.test.HpzcTreeMapper;
-import com.hpzc.model.common.PageParam;
 import com.hpzc.model.shiro.ShiroToken;
 import com.hpzc.model.test.HpzcTree;
 import com.hpzc.model.tms.HpzcUser;

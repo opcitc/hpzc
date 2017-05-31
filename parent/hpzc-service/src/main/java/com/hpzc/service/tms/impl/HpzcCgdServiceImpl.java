@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hpzc.common.util.SeqNum;
 import com.hpzc.common.util.UUID;
+import com.hpzc.dao.page.Page;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.dao.tms.HpzcCgdDetailMapper;
 import com.hpzc.dao.tms.HpzcCgdMapper;
 import com.hpzc.model.tms.HpzcCgd;
@@ -88,6 +90,11 @@ public class HpzcCgdServiceImpl implements HpzcCgdService {
 	@Override
 	public void deleteDetail(HpzcCgdDetail hpzcCgdDetail) {
 		hpzcCgdDetailDao.update(hpzcCgdDetail);
+	}
+
+	@Override
+	public List<HpzcCgd> selectByIds(String[] ids) {
+		return hpzcCgdDao.batchQuery(ids);
 	}
 
 }

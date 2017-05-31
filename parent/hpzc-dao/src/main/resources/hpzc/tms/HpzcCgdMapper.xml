@@ -450,4 +450,20 @@
 		</foreach>
 	</update>
 
+	<!-- 批量查询采购单 -->
+
+	<select id="batchQuery" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hpzc_cgd
+		<if test="array != null and array.length>0">
+			where h_id in
+			<foreach item="ids" index="index" collection="array" open="("
+				separator="," close=")">
+				#{ids}
+			</foreach>
+		</if>
+	</select>
+
+
 </mapper>
