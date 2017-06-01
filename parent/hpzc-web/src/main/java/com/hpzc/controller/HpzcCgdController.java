@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hpzc.common.json.JsonHelper;
 import com.hpzc.dao.page.Page;
 import com.hpzc.dao.page.PageParam;
+import com.hpzc.dao.tms.HpzcCgdMapper;
+import com.hpzc.model.common.Result;
 import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcCgdDetail;
 import com.hpzc.service.tms.HpzcCgdService;
@@ -26,13 +30,15 @@ import com.hpzc.service.tms.HpzcCgdService;
 public class HpzcCgdController {
 
 	@Autowired
+	private HpzcCgdMapper hpzcCgdDao;
+	@Autowired
 	private HpzcCgdService hpzcCgdService;
 
 	@RequestMapping("/hpzcCgdDetail")
 	public String hpzcCgdDetail(Model mm, String gCode) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hCode", gCode);
-		List<HpzcCgd> list = hpzcCgdService.selectByQuery(map);
+		List<HpzcCgd> list = hpzcCgdDao.selectByQuery(map);
 		HpzcCgd hpzcCgd = list.get(0);
 		mm.addAttribute("hpzcCgd", JsonHelper.encodeObject2Json(hpzcCgd));
 		return "hpzcCgd/hpzcCgdDetail";
@@ -41,9 +47,14 @@ public class HpzcCgdController {
 	// 采购单详情列表数据!
 	@ResponseBody
 	@RequestMapping(value = "/hpzcCgdDetailData", produces = "text/html;charset=UTF-8")
-	public String hpzcCgdDetailData(Model mm, String gCode) {
+	public String hpzcCgdDetailData(Model mm, String gCode, int page, int rows) {
+		PageHelper.startPage(page, rows);
 		List<HpzcCgdDetail> list = hpzcCgdService.selectByQueryDetail(gCode);
-		return JsonHelper.encodeObject2Json(list);
+		PageInfo<HpzcCgdDetail> p = new PageInfo<HpzcCgdDetail>(list);
+		Result result = new Result();
+		result.setTotal((int) p.getTotal());
+		result.setRows(p.getList());
+		return JsonHelper.encodeObject2Json(result);
 	}
 
 	// 保存新增采购单详情数据
@@ -82,16 +93,16 @@ public class HpzcCgdController {
 	// 采购单列表数据!
 	@ResponseBody
 	@RequestMapping(value = "/hpzcCgdData", produces = "text/html;charset=UTF-8")
-	public String hpzcCgdData(Model mm, @RequestParam String pageParam) {
-		/*
-		 * String msg = ""; try { msg = new
-		 * String(pageParam.getBytes("ISO-8859-1"), "UTF-8"); } catch
-		 * (UnsupportedEncodingException e) { e.printStackTrace(); }
-		 * System.out.println(msg);
-		 */
-		PageParam page = (PageParam) JsonHelper.encodeJsonToObject(pageParam, PageParam.class);
-		List<HpzcCgd> list = hpzcCgdService.selectByQuery(page.getSearchContent());
-		return JsonHelper.encodeObject2Json(list);
+	public String hpzcCgdData(Model mm, int page, int rows, @RequestParam String pageParam) {
+		PageParam pageParm = (PageParam) JsonHelper.encodeJsonToObject(pageParam, PageParam.class);
+		pageParm.setPage(page);
+		pageParm.setPageSize(rows);
+		// PageHelper.startPage(pageParm.getPage(), pageParm.getPageSize());
+		PageInfo<HpzcCgd> p = hpzcCgdService.selectByQuery(pageParm);
+		Result result = new Result();
+		result.setTotal((int) p.getTotal());
+		result.setRows(p.getList());
+		return JsonHelper.encodeObject2Json(result);
 	}
 
 	// 保存新增数据

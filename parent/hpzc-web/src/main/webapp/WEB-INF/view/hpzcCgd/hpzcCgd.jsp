@@ -114,7 +114,7 @@
 							pagination : true,
 							idField : 'hId',
 							pageSize : 10,
-							pageList : [ 10, 20, 30 ],
+							pageList : [ 5, 10, 15, 20, 25, 30 ],
 							onDblClickRow : function(rowIndex, rowData) {
 								if (obj.editRow != undefined) {
 									$('#cgd').datagrid('endEdit', obj.editRow);

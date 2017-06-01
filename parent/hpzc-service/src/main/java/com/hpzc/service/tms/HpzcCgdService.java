@@ -3,6 +3,7 @@ package com.hpzc.service.tms;
 import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.hpzc.dao.page.Page;
 import com.hpzc.dao.page.PageParam;
 import com.hpzc.model.tms.HpzcCgd;
@@ -48,7 +49,7 @@ public interface HpzcCgdService {
 	 * @return
 	 * @return ： 2016年10月8日 上午11:10:06
 	 */
-	public List<HpzcCgd> selectByQuery(Map<String, Object> map);
+	public PageInfo<HpzcCgd> selectByQuery(PageParam pageParm);
 
 	/**
 	 * @Description:保存采购单详情信息

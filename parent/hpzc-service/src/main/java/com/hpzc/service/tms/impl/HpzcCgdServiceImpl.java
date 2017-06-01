@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hpzc.common.util.SeqNum;
 import com.hpzc.common.util.UUID;
 import com.hpzc.dao.page.Page;
@@ -27,8 +29,6 @@ public class HpzcCgdServiceImpl implements HpzcCgdService {
 	private HpzcCgdMapper hpzcCgdDao;
 	@Autowired
 	private HpzcCgdDetailMapper hpzcCgdDetailDao;
-
-	Map<String, Object> map = new HashMap<String, Object>();
 
 	SeqNum seqNum = new SeqNum();
 	SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
@@ -62,10 +62,16 @@ public class HpzcCgdServiceImpl implements HpzcCgdService {
 	}
 
 	@Override
-	public List<HpzcCgd> selectByQuery(Map<String, Object> map) {
-		List<HpzcCgd> list = hpzcCgdDao.selectByQuery(map);
-		System.out.println(list.size());
-		return list;
+	public PageInfo<HpzcCgd> selectByQuery(PageParam pageParm) {
+		if (pageParm.getPage() == 0) {
+			pageParm.setPage(1);
+		}
+		if (pageParm.getPageSize() == 0) {
+			pageParm.setPageSize(100);
+		}
+		PageHelper.startPage(pageParm.getPage(), pageParm.getPageSize());
+		List<HpzcCgd> list = hpzcCgdDao.selectByQuery(pageParm.getSearchContent());
+		return new PageInfo<HpzcCgd>(list);
 	}
 
 	@Override
@@ -82,6 +88,7 @@ public class HpzcCgdServiceImpl implements HpzcCgdService {
 
 	@Override
 	public List<HpzcCgdDetail> selectByQueryDetail(String gCode) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("gCode", gCode);
 		List<HpzcCgdDetail> list = hpzcCgdDetailDao.selectByMap(map);
 		return list;

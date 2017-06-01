@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
+import com.hpzc.common.json.JsonHelper;
 import com.hpzc.common.util.UUID;
+import com.hpzc.dao.page.PageParam;
 import com.hpzc.dao.tms.HpzcUserMapper;
+import com.hpzc.model.common.Result;
+import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcUser;
+import com.hpzc.service.tms.HpzcCgdService;
 
 @Controller
 @RequestMapping("/easyui")
@@ -24,9 +36,35 @@ public class easyController {
 
 	@Autowired
 	private HpzcUserMapper hpzcUserDao;
+	@Autowired
+	private HpzcCgdService hpzcCgdService;
 
-	Map<String, Object> map = new HashMap<String, Object>();
 	Gson gson = new Gson();
+
+	// 分页
+	@RequestMapping("/pagehelper")
+	public String pagehelper(Model mm) {
+		return "easyui/pagehelper";
+	}
+
+	// 分页数据
+	@ResponseBody
+	@RequestMapping("/pagehelperjson")
+	public Result pagehelperjson(Model mm, HttpServletRequest request, HttpServletResponse response, int page, int rows,
+			@RequestParam String pageParam) {
+		PageParam pageParm = (PageParam) JsonHelper.encodeJsonToObject(pageParam, PageParam.class);
+		Result result = new Result();
+		pageParm.setPage(page);
+		pageParm.setPageSize(rows);
+		// 可将分页查询移到service层处理
+		// PageHelper.startPage(pageParm.getPage(), pageParm.getPageSize());
+		// List<HpzcCgd> list =
+		// hpzcCgdService.selectByQuery(pageParm.getSearchContent());
+		// PageInfo<HpzcCgd> p = new PageInfo<HpzcCgd>(list);
+		// result.setTotal((int) p.getTotal());
+		// result.setRows(p.getList());
+		return result;
+	}
 
 	@RequestMapping("/sender")
 	public String sender(Model mm, String receiver, String pswd, String moTime, String mobile, String msg,
@@ -74,7 +112,7 @@ public class easyController {
 	@ResponseBody
 	@RequestMapping("/easyuiJson")
 	public String easyuiJson(Model mm) {
-		// List<HpzcUser> list = new ArrayList<HpzcUser>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		List<HpzcUser> listUser = hpzcUserDao.selectByMap(map);
 		System.out.println(listUser);
 		return gson.toJson(listUser);

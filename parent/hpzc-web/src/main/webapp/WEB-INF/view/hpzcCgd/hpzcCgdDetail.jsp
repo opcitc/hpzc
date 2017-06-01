@@ -47,7 +47,11 @@
 	});
 
 	function init() {
-		var hpzcCgd = ${hpzcCgd};
+		var hpzcCgd = $
+		{
+			hpzcCgd
+		}
+		;
 		$("#cgje").val(hpzcCgd.hPurMoney);
 		$("#gCode").val(hpzcCgd.hCode);
 		$("#zdr").val(hpzcCgd.hPlayName);
@@ -71,7 +75,7 @@
 							pagination : true,
 							idField : 'gId',
 							pageSize : 10,
-							pageList : [ 10, 20, 30 ],
+							pageList : [ 5, 10, 20, 30 ],
 							onDblClickRow : function(rowIndex, rowData) {
 								if (obj.editRow != undefined) {
 									$('#cgd').datagrid('endEdit', obj.editRow);
@@ -104,7 +108,7 @@
 									url : url,
 									data : {
 										row : JSON.stringify(rowData),
-										gCode:gCode,
+										gCode : gCode,
 									},
 									beforeSend : function() {
 										$('#cgd').datagrid('loading');
