@@ -12,7 +12,8 @@
 		    classpath:spring-service.xml,
 		    classpath:spring-quartz.xml,
 		    classpath:spring-cxf.xml,
-		    classpath:spring-shiro.xml
+		    classpath:spring-shiro.xml,
+		    classpath:spring-dubbo.xml
         </param-value>
 	</context-param>
 

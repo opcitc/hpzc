@@ -15,7 +15,11 @@
 
 	<dependencies>
 
-
+		<dependency>
+			<groupId>hpzc-parent</groupId>
+			<artifactId>hpzc-interface</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>hpzc-parent</groupId>
 			<artifactId>hpzc-common</artifactId>
@@ -47,7 +51,7 @@
 			<version>${springframework.version}</version>
 		</dependency>
 
-		
+
 
 
 		<!-- <dependency> <groupId>jstl</groupId> <artifactId>jstl</artifactId> 
