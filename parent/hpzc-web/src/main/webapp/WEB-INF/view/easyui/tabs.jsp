@@ -12,11 +12,15 @@
 <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<div id="box">
+	<div id="mm" class="easyui-menu" style="width: 120px;">
 
-		<div title="Tab1">tab1</div>
-		<div title="Tab2">tab2</div>
-		<div title="Tab3">tab3</div>
+		<div>新建</div>
+
+		<div>打开</div>
+
+		<div>保存</div>
+
+		<div>退出</div>
 
 	</div>
 </body>

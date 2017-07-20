@@ -18,7 +18,7 @@ import com.hpzc.dao.shiro.HpzcPermissionMapper;
 import com.hpzc.model.tms.HpzcCgd;
 import com.hpzc.model.tms.HpzcXsd;
 
-@ContextConfiguration(locations = { "classpath:/spring-mybatis.xml" })
+@ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
 public class TestCommon extends AbstractJUnit4SpringContextTests {
 
 	@Autowired

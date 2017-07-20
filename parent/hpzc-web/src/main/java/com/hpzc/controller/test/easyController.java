@@ -39,7 +39,11 @@ public class easyController {
 	@Autowired
 	private HpzcCgdService hpzcCgdService;
 
-	Gson gson = new Gson();
+	// 分页
+	@RequestMapping("/menu")
+	public String menu(Model mm) {
+		return "easyui/menu";
+	}
 
 	// 分页
 	@RequestMapping("/pagehelper")
@@ -112,6 +116,7 @@ public class easyController {
 	@ResponseBody
 	@RequestMapping("/easyuiJson")
 	public String easyuiJson(Model mm) {
+		Gson gson = new Gson();
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<HpzcUser> listUser = hpzcUserDao.selectByMap(map);
 		System.out.println(listUser);

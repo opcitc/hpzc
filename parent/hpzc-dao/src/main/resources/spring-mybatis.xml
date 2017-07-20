@@ -83,8 +83,6 @@
 				</bean>
 			</array>
 		</property>
-
-
 	</bean>
 	<!-- 配置扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -92,6 +90,9 @@
 		<property name="basePackage" value="com.hpzc.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
+
+
+
 	<!-- 配置Spring的事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -100,5 +101,6 @@
 
 	<!-- 注解方式配置事物 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
 
 </beans>
