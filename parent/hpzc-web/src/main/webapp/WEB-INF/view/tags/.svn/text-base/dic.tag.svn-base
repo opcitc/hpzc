@@ -1,0 +1,11 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ tag pageEncoding="UTF-8" %>  
+<%@ attribute name="dictTarget" required="true" %>   
+
+<script type="text/javascript">
+<c:import url='/mdm/cbsDicCommon/dicDataToJs'>
+	<c:param name="dictTarget" value="${dictTarget}" /> 
+</c:import>
+</script> 
+ 
+ 
