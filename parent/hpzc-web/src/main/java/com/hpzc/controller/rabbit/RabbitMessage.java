@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class RabbitMessage {
+	
 	private static final long serialVersionUID = -6487839157908352120L;
 
 	private Class<?>[] paramTypes;// 参数类型

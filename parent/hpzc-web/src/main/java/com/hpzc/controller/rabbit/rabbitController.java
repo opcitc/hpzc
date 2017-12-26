@@ -35,7 +35,6 @@ public class rabbitController {
 		param.put("data1", "hello");
 		param.put("data2", "hello");
 		RabbitMessage msg = new RabbitMessage(exchange, routeKey, message);
-
 		// 发送消息
 		pro.sendMessage(msg);
 		con.rmqProducerMessage(msg);
